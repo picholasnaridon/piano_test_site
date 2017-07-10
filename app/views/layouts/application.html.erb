@@ -11,6 +11,19 @@
 
   <body>
     <div class="container">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/articles">World News</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/topics/News">News</a></li>
+            <li><a href="/topics/Lifestyle">Lifestyle</a></li>
+            <li><a href="/topics/Sports">Sports</a></li>
+          </ul>
+          <button class="btn btn-danger navbar-btn">Button</button>
+        </div>
+      </nav>
       <%= yield %>
     </div>
     <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>

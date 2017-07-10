@@ -7,6 +7,6 @@
 <p>
   <%= @article.body %>
 </p>
-<%= link_to 'Back', articles_path, class: "btn btn-primary" %>
-<%= link_to 'Edit Article', edit_article_path(@article), class: "btn btn-warning" %>
+<%= link_to "Back to #{@topic.name}", topic_path(@topic), class: "btn btn-primary" %>
+<%= link_to 'Edit Article', edit_topic_article_path(@topic, @article), class: "btn btn-warning" %>
 <%= link_to 'Delete Article', @article, method: :delete, class: "btn btn-danger" %>

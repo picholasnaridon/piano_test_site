@@ -2,8 +2,8 @@
 
 <ul class="list-group">
   <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article), class: "list-group-item-active" %>
+    <li class="list-group-item">
+      <%= link_to article.title, article_path(article)%>
     </li>
   <% end %>
 </ul>

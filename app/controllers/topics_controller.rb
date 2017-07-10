@@ -17,8 +17,15 @@ class TopicsController < ApplicationController
     end
   end
 
+  def destroy
+    @topic = Topic.friendly.find(params[:id])
+    @topic.destroy
+    flash[:notice] = 'Topic has been deleted'
+    redirect_to topics_path
+  end
+
   def show
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
     @comment = Article.new
     @articles = @topic.articles
   end

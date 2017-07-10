@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @article = @topic.articles.create(article_params)
     if @article.save
       redirect_to( @topic )
@@ -14,17 +14,18 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @topic = Topic.friendly.find(params[:topic_id])
     @article = Article.find(params[:id])
   end
 
   def new
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @article = Article.new
   end
 
   def update
     @article = Article.find(params[:id])
-
+    @topic = Topic.find(params[:topic_id])
     if @article.update(article_params)
       redirect_to @article
     else
@@ -34,13 +35,14 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @topic = Topic.friendly.find(params[:topic_id])
   end
 
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
     flash[:notice] = 'Article has been deleted'
-    redirect_to articles_path
+    redirect_to topics_path
   end
 
   private
