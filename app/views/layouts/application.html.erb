@@ -2,9 +2,7 @@
 <html>
   <head>
     <title>PianoTestSite</title>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/
-    <%= bootstrap_version %>
-    /css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css" rel="stylesheet">
 
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -15,8 +13,6 @@
     <div class="container">
       <%= yield %>
     </div>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/
-      <%= bootstrap_version %>
-    /js/bootstrap.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
   </body>
 </html>

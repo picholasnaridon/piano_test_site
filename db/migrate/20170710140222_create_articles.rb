@@ -5,7 +5,8 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.text :body
       t.string :author
       t.string :published
-
+      t.string :thumbnail
+      t.belongs_to :topic
       t.timestamps
     end
   end

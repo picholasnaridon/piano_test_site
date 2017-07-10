@@ -1,0 +1,12 @@
+<h1>
+  <%= @article.title %>
+</h1>
+<h2>
+  By: <%= @article.author %>
+</h2>
+<p>
+  <%= @article.body %>
+</p>
+<%= link_to 'Back', articles_path, class: "btn btn-primary" %>
+<%= link_to 'Edit Article', edit_article_path(@article), class: "btn btn-warning" %>
+<%= link_to 'Delete Article', @article, method: :delete, class: "btn btn-danger" %>
