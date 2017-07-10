@@ -1,0 +1,13 @@
+<h1><%= @topic.name %> Articles</h1>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, topic_article_path(@topic, article), class: "list-group-item"%>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Topics", topics_path, class: "btn btn-primary" %>
+<%= link_to "New #{@topic.name} Article", new_topic_article_path(@topic, @article), class: "btn btn-success" %>
+<%= link_to "Delete #{@topic.name} Category", @topic, method: :delete, class: "btn btn-danger" %>

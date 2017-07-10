@@ -1,0 +1,24 @@
+
+<%= form_for([@topic, @article]) do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </p>
+
+  <p>
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+  </p>
+
+
+
+  <p>
+    <%= f.submit 'Submit', :class => 'btn btn-success'%>
+  </p>
+
+<% end %>

@@ -27,4 +27,5 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'friendly_id'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
