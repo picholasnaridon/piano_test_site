@@ -2,13 +2,21 @@
 <html>
   <head>
     <title>PianoTestSite</title>
-    <%= csrf_meta_tags %>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/
+    <%= bootstrap_version %>
+    /css/bootstrap.min.css" rel="stylesheet">
 
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/
+      <%= bootstrap_version %>
+    /js/bootstrap.min.js"></script>
   </body>
 </html>
