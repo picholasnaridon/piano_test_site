@@ -37,9 +37,8 @@
           <ul class="nav navbar-nav navbar-right">
             <script type="text/javascript">
             tp.push(["init", function(){
-              var state = tp.pianoId.isUserValid()
-              if (state) {
-                jQuery("#login").replaceWith("<a href=\"#\" id=\"#logout\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
+              if (tp.pianoId.isUserValid()) {
+                jQuery("#logout").hide()
               }
             }])
 
@@ -51,8 +50,8 @@
                   displayMode: 'modal',
                   loggedIn: function(){
                       if (tp.pianoId.isUserValid() == true) {
-                        jQuery("#login").replaceWith("<a href=\"#\" id=\"signup\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
-                        jQuery("#signup").remove();
+                        jQuery("#login").show()
+                        jQuery("#signup").show();
                         console.log("Logged in")
                       }
                     }
@@ -63,11 +62,12 @@
               tp.push( ["init", function() {
                 document.getElementById('logout').onclick = function(){
                   tp.pianoId.logout();
-                  jQuery("#logout").replaceWith("<a href=\"#\" id=\"#login\"><span class=\"glyphicon glyphicon-user\"></span> Login/a>")
+                  jQuery("#logout").hide()
                 }
               }])
             </script>
             <li><a href="#" id="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="#" id="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
             <li><a href="#" id="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           </ul>
         </div>
