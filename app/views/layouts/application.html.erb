@@ -52,7 +52,8 @@
           screen: 'login',
           displayMode: 'modal',
           loggedIn: function(){
-              if (tp.Piano.isUserValid() == true) {
+              var state = tp.Piano.isUserValid()
+              if (state == true) {
                 jQuery("#login").replaceWith("<a href=\"#\" id=\"signup\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
                 jQuery("#signup").remove();
                 console.log("Logged in")
