@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @topic = Topic.friendly.find(params[:topic_id])
     if @article.update(article_params)
-      redirect_to @article
+      redirect_to @topic
     else
       render 'edit'
     end
