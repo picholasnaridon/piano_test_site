@@ -36,12 +36,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <script type="text/javascript">
-
-            var state = tp.pianoId.isUserValid()
-
-            if (state) {
-              jQuery("#login").replaceWith("<a href=\"#\" id=\"#logout\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
-            }
+            tp.push(["init", function(){
+              var state = tp.pianoId.isUserValid()
+              if (state) {
+                jQuery("#login").replaceWith("<a href=\"#\" id=\"#logout\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
+              }
+            }])
 
 
             tp.push(["init", function(){
