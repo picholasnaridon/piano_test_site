@@ -37,8 +37,10 @@
           <ul class="nav navbar-nav navbar-right">
             <script type="text/javascript">
 
-            if (tp.pianoId.isUserValid() == true) {
-              jQuery("#login").replaceWith("<a href=\"#\" id=\"signup\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
+            var state = tp.pianoId.isUserValid()
+
+            if (state) {
+              jQuery("#login").replaceWith("<a href=\"#\" id=\"#logout\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
             }
 
 
@@ -61,7 +63,7 @@
               tp.push( ["init", function() {
                 document.getElementById('logout').onclick = function(){
                   tp.pianoId.logout();
-                  jQuery("#logout").replaceWith("<a href=\"#\" id=\"login\"><span class=\"glyphicon glyphicon-user\"></span> Login/a>")
+                  jQuery("#logout").replaceWith("<a href=\"#\" id=\"#login\"><span class=\"glyphicon glyphicon-user\"></span> Login/a>")
                 }
               }])
             </script>
