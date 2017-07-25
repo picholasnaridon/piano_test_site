@@ -44,20 +44,27 @@
     </div>
     <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+
+
     tp.push(["init", function(){
       document.getElementById('login').onclick = function() {
         tp.pianoId.show({
           screen: 'login',
-          displayMode: 'modal'
-        });
-      };
+          displayMode: 'modal',
+          loginSuccess:function() {
+            jQuery("#login").replaceWith("<a href="#" id="logout"><span class="glyphicon glyphicon-user"></span> Logout</a>");
+            jQuery("#signup").remove();
+            console.log("Logged in")
+
+          });
+        };
       }])
 
       tp.push( ["init", function() {
-      document.getElementById('signup').onclick = function(){
-        tp.pianoId.logout();
-        console.log("logged out")
-      }
+        document.getElementById('signup').onclick = function(){
+          tp.pianoId.logout();
+          console.log("logged out")
+        }
       }])
     </script>
   </body>
