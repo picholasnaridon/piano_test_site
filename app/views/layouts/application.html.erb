@@ -8,7 +8,6 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script>tp = window.tp || [];
-
       (function(src) {
             var a = document.createElement("script");
             a.type = "text/javascript";
@@ -17,11 +16,38 @@
             var b = document.getElementsByTagName("script")[0];
             b.parentNode.insertBefore(a, b)
         })("//sandbox.tinypass.com/xbuilder/experience/load?aid=oiGmjC8JwK");
+    </script>
+    <script type="text/javascript">
+    tp.push(["init", function(){
+      if (tp.pianoId.isUserValid()) {
+        $("#login").hide()
+        $("#signup").hide()
+      } else {
+        $("#logout").hide()
+      }
+    }])
 
-    ;</script>
 
+      tp.push(["init", function(){
+        document.getElementById('login').onclick = function() {
+          tp.pianoId.show({
+            screen: 'login',
+            displayMode: 'modal',
+            loggedIn: function(){
+                  location.reload();
+              };
+            });
+          };
+        }])
+
+        tp.push( ["init", function() {
+          document.getElementById('logout').onclick = function(){
+            tp.pianoId.logout();
+              location.reload();
+          }
+        }])
+    </script>
   </head>
-
   <body>
     <div class="container">
       <nav class="navbar navbar-inverse">
@@ -35,35 +61,6 @@
             <li><a href="/topics/Sports">Sports</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <script type="text/javascript">
-            tp.push(["init", function(){
-              if (tp.pianoId.isUserValid() == false) {
-                jQuery("#logout").hide()
-              }
-            }])
-
-
-            tp.push(["init", function(){
-              document.getElementById('login').onclick = function() {
-                tp.pianoId.show({
-                  screen: 'login',
-                  displayMode: 'modal',
-                  loggedIn: function(){
-                        jQuery("#login").show()
-                        jQuery("#signup").show()
-                        console.log("Logged in")
-                    };
-                  });
-                };
-              }])
-
-              tp.push( ["init", function() {
-                document.getElementById('logout').onclick = function(){
-                  tp.pianoId.logout();
-                  jQuery("#logout").hide()
-                }
-              }])
-            </script>
             <li><a href="#" id="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <li><a href="#" id="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
             <li><a href="#" id="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
