@@ -51,11 +51,11 @@
         tp.pianoId.show({
           screen: 'login',
           displayMode: 'modal',
-          loginSuccess:function() {
-            jQuery("#login").replaceWith("<a href="#" id="logout"><span class="glyphicon glyphicon-user"></span> Logout</a>");
+          loggedIn: function(){
+            jQuery("#login").replaceWith("<a href=\"#\" id=\"signup\"><span class=\"glyphicon glyphicon-user\"></span> Sign Up</a>")
             jQuery("#signup").remove();
             console.log("Logged in")
-
+            }
           });
         };
       }])
