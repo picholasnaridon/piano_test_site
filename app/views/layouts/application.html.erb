@@ -7,7 +7,18 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <script>(function(src){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=src;var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})("https://sandbox.tinypass.com/xbuilder/experience/load?aid=oiGmjC8JwK");</script>
+    <script>tp = window.tp || [];
+
+      (function(src) {
+            var a = document.createElement("script");
+            a.type = "text/javascript";
+            a.async = true;
+            a.src = src;
+            var b = document.getElementsByTagName("script")[0];
+            b.parentNode.insertBefore(a, b)
+        })("//sandbox.tinypass.com/xbuilder/experience/load?aid=oiGmjC8JwK");
+
+    ;</script>
 
   </head>
 
@@ -23,10 +34,31 @@
             <li><a href="/topics/Lifestyle">Lifestyle</a></li>
             <li><a href="/topics/Sports">Sports</a></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" id="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
         </div>
       </nav>
       <%= yield %>
     </div>
     <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    tp.push(["init", function(){
+      document.getElementById('login').onclick = function() {
+        tp.pianoId.show({
+          screen: 'login',
+          displayMode: 'modal'
+        });
+      };
+      }])
+
+      tp.push( ["init", function() {
+      document.getElementById('signup').onclick = function(){
+        tp.pianoId.logout();
+        console.log("logged out")
+      }
+      }])
+    </script>
   </body>
 </html>

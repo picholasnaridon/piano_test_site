@@ -1,12 +1,30 @@
-<h1>
-  <%= @article.title %>
-</h1>
-<h2>
-  By: <%= @article.author %>
-</h2>
-<p>
-  <%= @article.body %>
-</p>
+
+<table style="width:90%">
+  <tr>
+    <th>
+      <%= @article.title %>
+    </th>
+  </tr>
+    <td>
+      Picutre here
+    </td>
+  <tr>
+    <th>
+      By: <%= @article.author %>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <%= @article.body %>
+    </td>
+  </tr>
+  <tr>
+    <td class="piano-content">
+
+    </td>
+  </tr>
+</table>
+
 <%= link_to "Back to #{@topic.name}", topic_path(@topic), class: "btn btn-primary" %>
 <%= link_to 'Edit Article', edit_topic_article_path(@topic, @article), class: "btn btn-warning" %>
 <%= link_to 'Delete Article', @article, method: :delete, class: "btn btn-danger" %>
