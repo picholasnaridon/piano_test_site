@@ -6,7 +6,9 @@
     </th>
   </tr>
     <td>
-      Picutre here
+      <% if @article.thumbnail != null %>
+      <%= image_tag(@article.thumbnail)%>
+      <% end %>
     </td>
   <tr>
     <th>
