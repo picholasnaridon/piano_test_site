@@ -52,9 +52,11 @@
           screen: 'login',
           displayMode: 'modal',
           loggedIn: function(){
-            jQuery("#login").replaceWith("<a href=\"#\" id=\"signup\"><span class=\"glyphicon glyphicon-user\"></span> Sign Up</a>")
-            jQuery("#signup").remove();
-            console.log("Logged in")
+              if (tp.Piano.isUserValid() == true) {
+                jQuery("#login").replaceWith("<a href=\"#\" id=\"signup\"><span class=\"glyphicon glyphicon-user\"></span> Sign Up</a>")
+                jQuery("#signup").remove();
+                console.log("Logged in")
+              }
             }
           });
         };
