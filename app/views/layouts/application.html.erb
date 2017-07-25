@@ -35,7 +35,37 @@
             <li><a href="/topics/Sports">Sports</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <script type="text/javascript">
+
+            if (tp.pianoId.isUserValid() == true) {
+              jQuery("#login").replaceWith("<a href=\"#\" id=\"signup\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
+            }
+
+
+            tp.push(["init", function(){
+              document.getElementById('login').onclick = function() {
+                tp.pianoId.show({
+                  screen: 'login',
+                  displayMode: 'modal',
+                  loggedIn: function(){
+                      if (tp.pianoId.isUserValid() == true) {
+                        jQuery("#login").replaceWith("<a href=\"#\" id=\"signup\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
+                        jQuery("#signup").remove();
+                        console.log("Logged in")
+                      }
+                    }
+                  });
+                };
+              }])
+
+              tp.push( ["init", function() {
+                document.getElementById('logout').onclick = function(){
+                  tp.pianoId.logout();
+                  jQuery("#logout").replaceWith("<a href=\"#\" id=\"login\"><span class=\"glyphicon glyphicon-user\"></span> Login/a>")
+                }
+              }])
+            </script>
+            <li><a href="#" id="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <li><a href="#" id="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           </ul>
         </div>
@@ -43,31 +73,6 @@
       <%= yield %>
     </div>
     <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
 
-
-    tp.push(["init", function(){
-      document.getElementById('login').onclick = function() {
-        tp.pianoId.show({
-          screen: 'login',
-          displayMode: 'modal',
-          loggedIn: function(){
-              if (tp.pianoId.isUserValid() == true) {
-                jQuery("#login").replaceWith("<a href=\"#\" id=\"signup\"><span class=\"glyphicon glyphicon-user\"></span> Logout/a>")
-                jQuery("#signup").remove();
-                console.log("Logged in")
-              }
-            }
-          });
-        };
-      }])
-
-      tp.push( ["init", function() {
-        document.getElementById('signup').onclick = function(){
-          tp.pianoId.logout();
-          console.log("logged out")
-        }
-      }])
-    </script>
   </body>
 </html>
