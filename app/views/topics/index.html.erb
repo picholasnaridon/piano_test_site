@@ -1,7 +1,7 @@
 <div class="row">
   <div class="card-deck">
     <% @articles.each do |article| %>
-      <%= link_to article.title, topic_article_path(article.topic, article) %>
+      <%= link_to topic_article_path(article.topic, article) do %>
         <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="<%= article.thumbnail %>" height="90" alt="<%= article.title %>">
           <div class="card-block">
@@ -12,6 +12,7 @@
             <small class="text-muted"><%= article.created_at %></small>
           </div>
         </div>
+        <% end %>
     <% end %>
   </div>
 </div>
