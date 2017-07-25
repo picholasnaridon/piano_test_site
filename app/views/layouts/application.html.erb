@@ -37,7 +37,7 @@
           <ul class="nav navbar-nav navbar-right">
             <script type="text/javascript">
             tp.push(["init", function(){
-              if (!tp.pianoId.isUserValid()) {
+              if (tp.pianoId.isUserValid() == false) {
                 jQuery("#logout").hide()
               }
             }])
@@ -49,9 +49,9 @@
                   screen: 'login',
                   displayMode: 'modal',
                   loggedIn: function(){
-                        jQuery("#login").show();
-                        jQuery("#signup").show();
-                        console.log("Logged in");
+                        jQuery("#login").show()
+                        jQuery("#signup").show()
+                        console.log("Logged in")
                     };
                   });
                 };
