@@ -1,11 +1,16 @@
 <h1>Topics</h1>
 
 <ul class="list-group">
-  <% @topics.each do |topic| %>
-    <li>
-      <%= link_to topic.name, topic_path(topic), class: "list-group-item" %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "New Topic", new_topic_path, class: "btn btn-primary" %>
+  <% @articles.each do |article| %>
+  <%= link_to article.title, topic_article_path(article.topic, article), class: "list-group-item" %>
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="<%= article.thumbnail %>" height="90" alt="<%= article.title %>">
+      <div class="card-block">
+        <p class="card-text">By <%= article.author %></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"><%= article.created_at %></small>
+      </div>
+    </div>
+    <% end %>
+  </ul>
