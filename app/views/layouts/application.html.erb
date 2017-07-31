@@ -62,7 +62,7 @@
         tp.push(["init", function(){
           document.getElementById('myaccount').onclick = function() {
             tp.myaccount.show({
-                displayMode: "inline",
+                displayMode: "modal",
                 containerSelector: "#account-info",
                 width: "1024px",
                 height: "500px",
@@ -94,9 +94,9 @@
           </ul>
         </div>
       </nav>
-      <div id="account-info">
-      </div>
       <%= yield %>
+    </div>
+    <div id="account-info">
     </div>
     <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
 
