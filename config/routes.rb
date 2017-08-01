@@ -6,5 +6,3 @@ Rails.application.routes.draw do
   end
   resources :articles
 end
-
-get 'welcome/myaccount'
