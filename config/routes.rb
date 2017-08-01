@@ -7,4 +7,4 @@ Rails.application.routes.draw do
   resources :articles
 end
 
-get 'myaccount'
+get 'welcome/myaccount'
