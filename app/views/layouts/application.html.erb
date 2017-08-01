@@ -60,7 +60,7 @@
         }])
 
         tp.push(["init", function(){
-          document.getElementById('myaccount').onclick = function() {
+          document.getElementById('myaccount') = function() {
             tp.myaccount.show({
                 displayMode: "inline",
                 containerSelector: "#account-info"
@@ -86,7 +86,7 @@
             <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <li><a href="#" id="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
             <li><a href="#" id="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#" id="myaccount"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+            <li><a href="/welcome/myaccount" id="myaccount"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
 
           </ul>
         </div>
