@@ -8,68 +8,50 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script>
-    tp = window.tp || [];
-      (function(src) {
-            var a = document.createElement("script");
-            a.type = "text/javascript";
-            a.async = true;
-            a.src = src;
-            var b = document.getElementsByTagName("script")[0];
-            b.parentNode.insertBefore(a, b)
-        })("//sandbox.tinypass.com/xbuilder/experience/load?aid=oiGmjC8JwK");
-    
+      // Adblock Functionality (should come before any other Piano Javascript)
 
-    tp.push(["init", function(){
-      if (tp.pianoId.isUserValid()) {
-        $("#login").hide()
-        $("#signup").hide()
-      } else {
-        $('#myaccount').hide()
-        $("#logout").hide()
+      document.cookie = "__adblocker=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+      var setNptTechAdblockerCookie = function(adblocker) {
+          var d = new Date();
+          d.setTime(d.getTime() + 60 * 60 * 24 * 2 * 1000);
+          document.cookie = "__adblocker=" + (adblocker ? "true" : "false") + "; expires=" + d.toUTCString() + "; path=/";
       }
-    }])
+      var script = document.createElement("script");
+      script.setAttribute("async", true);
+      script.setAttribute("src", "//www.npttech.com/advertising.js");
+      script.setAttribute("onerror", "setNptTechAdblockerCookie(true);");
+      document.getElementsByTagName("head")[0].appendChild(script);
+    </script>
 
+    <script>
+      // Basic Composer Functionality
 
-      tp.push(["init", function(){
-        document.getElementById('login').onclick = function() {
-          tp.pianoId.show({
-            screen: 'login',
-            displayMode: 'modal',
-            loggedIn: function(){
-                  location.reload();
-              }
-            })
-          }
-        }])
+      tp = window.tp || [];
+        (function(src) {
+              var a = document.createElement("script");
+              a.type = "text/javascript";
+              a.async = true;
+              a.src = src;
+              var b = document.getElementsByTagName("script")[0];
+              b.parentNode.insertBefore(a, b)
+          })("//sandbox.tinypass.com/xbuilder/experience/load?aid=oiGmjC8JwK"); // AID Added Here
 
-        tp.push(["init", function(){
-          document.getElementById('signup').onclick = function() {
-            tp.pianoId.show({
-              screen: 'register',
-              displayMode: 'modal',
-              loggedIn: function(){
-                    location.reload();
-                }
-              })
-            }
-          }])
+      // Pushing Information to Piano
 
-        tp.push( ["init", function() {
-          document.getElementById('logout').onclick = function(){
-            tp.pianoId.logout();
-              location.reload();
-            }
-        }])
-
-        tp.push(["init", function(){
-          document.getElementById('myaccount').onclick = function() {
-            tp.myaccount.show({
-                displayMode: "inline",
-                containerSelector: "#account-info"
-              })
-            }
-          }])
-
+      // The content ID from your CMS
+      tp.push(["setContentId", "1234"]);
+      // The date content is published
+      tp.push(["setContentCreated", "<Date Created>"]);
+      // The content author
+      tp.push(["setContentAuthor", "<Author Name>"]);
+      // The content section (sports, lifestyle, opinion)
+      tp.push(["setContentSection", "<Content Section>"]);
+      // The content tags from CMS (premium, breaking news, paid)
+      tp.push(["setTags", ["<First Tag>", "<Second tag>", "<Third tag>"]]);
+      // If the content is native advertising (true or false)
+      tp.push(["setContentIsNative", false]);
+      // The AAM Zone
+      tp.push(["setZone", "<Zone>"]);
     </script>
   </head>
   <body>
