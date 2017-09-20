@@ -7,7 +7,8 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <script>tp = window.tp || [];
+    <script>
+    tp = window.tp || [];
       (function(src) {
             var a = document.createElement("script");
             a.type = "text/javascript";
@@ -16,36 +17,22 @@
             var b = document.getElementsByTagName("script")[0];
             b.parentNode.insertBefore(a, b)
         })("//sandbox.tinypass.com/xbuilder/experience/load?aid=oiGmjC8JwK");
-    </script>
-    <script type="text/javascript">
-
-    tp.push(["init", function(){
-      if (tp.pianoId.isUserValid()) {
-        $("#login").hide()
-        $("#signup").hide()
-      } else {
-        $('#myaccount').hide()
-        $("#logout").hide()
-      }
-    }])
-
 
       tp.push(["init", function(){
-        document.getElementById('login').onclick = function() {
-          tp.pianoId.show({
-            screen: 'login',
-            displayMode: 'modal',
-            loggedIn: function(){
-                  location.reload();
-              }
-            })
-          }
-        }])
+        if (tp.pianoId.isUserValid()) {
+          $("#login").hide()
+          $("#signup").hide()
+        } else {
+          $('#myaccount').hide()
+          $("#logout").hide()
+        }
+      }])
+
 
         tp.push(["init", function(){
-          document.getElementById('signup').onclick = function() {
+          document.getElementById('login').onclick = function() {
             tp.pianoId.show({
-              screen: 'register',
+              screen: 'login',
               displayMode: 'modal',
               loggedIn: function(){
                     location.reload();
@@ -54,42 +41,35 @@
             }
           }])
 
-        tp.push( ["init", function() {
-          document.getElementById('logout').onclick = function(){
-            tp.pianoId.logout();
-              location.reload();
-            }
-        }])
+          tp.push(["init", function(){
+            document.getElementById('signup').onclick = function() {
+              tp.pianoId.show({
+                screen: 'register',
+                displayMode: 'modal',
+                loggedIn: function(){
+                      location.reload();
+                  }
+                })
+              }
+            }])
 
-        tp.push(["init", function(){
-          document.getElementById('myaccount').onclick = function() {
-            tp.myaccount.show({
-                displayMode: "inline",
-                containerSelector: "#account-info"
-              })
-            }
+          tp.push( ["init", function() {
+            document.getElementById('logout').onclick = function(){
+              tp.pianoId.logout();
+                location.reload();
+              }
           }])
 
-        var expired = false
+          tp.push(["init", function(){
+            document.getElementById('myaccount').onclick = function() {
+              tp.myaccount.show({
+                  displayMode: "inline",
+                  containerSelector: "#account-info"
+                })
+              }
+            }])
 
-        tp.push(["addHandler", "meterExpired", function(meterData){
-            expired = true
-        }]);
-
-        tp.push(["addHandler", "checkoutClose", function( event ){
-            switch (event.state){
-                case 'checkoutCompleted':
-
-                    break;
-                case 'alreadyHasAccess':
-
-                    break;
-                case 'close':
-                  if (expired){
-                    window.location.href = "composerdemo.herokuapp.com";
-                  }
-            }
-        }]);
+      
     </script>
   </head>
   <body>
