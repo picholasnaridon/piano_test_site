@@ -26,50 +26,42 @@
           $('#myaccount').hide()
           $("#logout").hide()
         }
+
+      document.getElementById('login').onclick = function() {
+        tp.pianoId.show({
+          screen: 'login',
+          displayMode: 'modal',
+          loggedIn: function(){
+                location.reload();
+            }
+          })
+        }
+
+        document.getElementById('signup').onclick = function() {
+          tp.pianoId.show({
+            screen: 'register',
+            displayMode: 'modal',
+            loggedIn: function(){
+                  location.reload();
+              }
+            })
+          }
+
+
+        document.getElementById('logout').onclick = function(){
+          tp.pianoId.logout();
+            location.reload();
+          }
+
+        document.getElementById('myaccount').onclick = function() {
+          tp.myaccount.show({
+              displayMode: "inline",
+              containerSelector: "#account-info"
+            })
+          }
       }])
 
 
-        tp.push(["init", function(){
-          document.getElementById('login').onclick = function() {
-            tp.pianoId.show({
-              screen: 'login',
-              displayMode: 'modal',
-              loggedIn: function(){
-                    location.reload();
-                }
-              })
-            }
-          }])
-
-          tp.push(["init", function(){
-            document.getElementById('signup').onclick = function() {
-              tp.pianoId.show({
-                screen: 'register',
-                displayMode: 'modal',
-                loggedIn: function(){
-                      location.reload();
-                  }
-                })
-              }
-            }])
-
-          tp.push( ["init", function() {
-            document.getElementById('logout').onclick = function(){
-              tp.pianoId.logout();
-                location.reload();
-              }
-          }])
-
-          tp.push(["init", function(){
-            document.getElementById('myaccount').onclick = function() {
-              tp.myaccount.show({
-                  displayMode: "inline",
-                  containerSelector: "#account-info"
-                })
-              }
-            }])
-
-      
     </script>
   </head>
   <body>
