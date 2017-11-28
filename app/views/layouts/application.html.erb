@@ -54,14 +54,13 @@
               b.parentNode.insertBefore(a, b)
           })("//sandbox.tinypass.com/xbuilder/experience/load?aid=oiGmjC8JwK");
 
-        tp.push(["init", function(){
           if (tp.pianoId.isUserValid()) {
             $("#login").hide()
             $("#signup").hide()
           } else {
             $('#myaccount').hide()
             $("#logout").hide()
-          }
+          
 
         document.getElementById('login').onclick = function() {
           tp.pianoId.show({
