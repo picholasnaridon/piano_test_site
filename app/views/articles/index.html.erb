@@ -3,10 +3,11 @@
 <ul class="list-group">
   <% @articles.each do |article| %>
     <li class="list-group-item">
-      <%= link_to(image_tag(article.thumbnail), article_path(article)) %>
+      <%= link_to(image_tag(article.thumbnail), article_path(article), class: "article-link") %>
     </li>
   <% end %>
 </ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/live_stream?channel=paridonn1"></iframe>
 <br>
 
 <%= link_to "New Article", new_article_path, class: "btn btn-primary" %>
